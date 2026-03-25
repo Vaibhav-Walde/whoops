@@ -152,7 +152,7 @@ const AuthForm = ({ mode }: AuthFormProps) => {
                 <p className="text-xs font-mono mt-1" style={{ color: "var(--text-secondary)" }}>
                   {isSignup ? "Start writing with" : "Sign in to"}{" "}
                   <span className="font-semibold" style={{ color: "var(--primary)" }}>
-                    Draftly
+                    Whoops
                   </span>
                 </p>
               </div>

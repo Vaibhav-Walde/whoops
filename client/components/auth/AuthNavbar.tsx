@@ -20,7 +20,7 @@ export default function AuthNavbar() {
           >
             <FileText className="w-4 h-4 text-white" />
           </div>
-          Draftly
+          Whoops
         </Link>
 
         {/* Theme Toggle */}

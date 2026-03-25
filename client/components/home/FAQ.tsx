@@ -6,12 +6,12 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Is Draftly free to use?",
-    a: "Yes — Draftly is completely free. Create unlimited documents, invite collaborators, and use all features at no cost.",
+    q: "Is Whoops free to use?",
+    a: "Yes — Whoops is completely free. Create unlimited documents, invite collaborators, and use all features at no cost.",
   },
   {
     q: "How does real-time collaboration work?",
-    a: "Draftly uses Yjs, a CRDT library, combined with a WebSocket server. Every keystroke is synced across all connected clients instantly, with automatic conflict resolution.",
+    a: "Whoops uses Yjs, a CRDT library, combined with a WebSocket server. Every keystroke is synced across all connected clients instantly, with automatic conflict resolution.",
   },
   {
     q: "What happens if I lose connection?",
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "How does version history work?",
-    a: "Every time content is saved, a new DocumentVersion is created storing the full Yjs binary state. Draftly keeps the latest 20 versions per document, cleaned up automatically every 12 hours.",
+    a: "Every time content is saved, a new DocumentVersion is created storing the full Yjs binary state. Whoops keeps the latest 20 versions per document, cleaned up automatically every 12 hours.",
   },
   {
     q: "What login methods are supported?",

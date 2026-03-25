@@ -35,7 +35,7 @@ const CTABanner = () => (
           className="relative font-mono text-sm mb-10 max-w-md mx-auto"
           style={{ color: "var(--text-secondary)" }}
         >
-          Join Draftly and experience real-time document collaboration. Free, fast, and built for
+          Join Whoops and experience real-time document collaboration. Free, fast, and built for
           teams.
         </p>
         <Link

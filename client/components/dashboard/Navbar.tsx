@@ -53,7 +53,7 @@ const DashboardNavbar = () => {
           >
             <FileText className="w-4 h-4 text-white" />
           </div>
-          Draftly
+          Whoops
         </Link>
 
         {/* Right side */}

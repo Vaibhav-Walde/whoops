@@ -11,7 +11,7 @@ interface SendMailOptions {
 export const sendMail = async ({ to, subject, html }: Omit<SendMailOptions, "text">) => {
   try {
     await resend.emails.send({
-      from: "Draftly <noreply@shivamkumar.work>",
+      from: "Whoops <noreply@whoops.app>",
       to,
       subject,
       html: html ?? "",

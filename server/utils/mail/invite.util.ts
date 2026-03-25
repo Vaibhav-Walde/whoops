@@ -45,7 +45,7 @@ export const sendInviteEmail = async ({
                       <tr>
                         <td>
                           <div style="display:inline-block;background-color:#2563EB;border-radius:6px;padding:6px 8px;margin-bottom:16px;">
-                            <span style="color:#ffffff;font-size:14px;font-weight:600;font-family:monospace;">✦ draftly</span>
+                            <span style="color:#ffffff;font-size:14px;font-weight:600;font-family:monospace;">✦ Whoops</span>
                           </div>
                         </td>
                       </tr>
@@ -119,7 +119,7 @@ export const sendInviteEmail = async ({
                 <tr>
                   <td style="padding:20px 40px;border-top:1px solid #27272A;">
                     <p style="margin:0;font-size:12px;color:#52525B;font-family:monospace;">
-                      © ${new Date().getFullYear()} Draftly. All rights reserved.
+                      © ${new Date().getFullYear()} Whoops. All rights reserved.
                     </p>
                   </td>
                 </tr>
@@ -134,7 +134,7 @@ export const sendInviteEmail = async ({
 
   await sendMail({
     to,
-    subject: `You've been invited to "${documentTitle}" on Draftly`,
+    subject: `You've been invited to "${documentTitle}" on Whoops`,
     html,
   });
 };

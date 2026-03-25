@@ -1,11 +1,11 @@
 ![Banner image](/Banner.png)
-# Draftly
+# Whoops
 > A real-time collaborative document editor with role-based access control, rich text editing, and version history.
 
 Full-stack real-time collaborative editor built with **Next.js**, **Express**, **Prisma**, and **Redis**, enabling seamless document editing, team collaboration, and scalable productivity workflows.
 
 
-![Draftly](https://img.shields.io/badge/Draftly-Document%20Editor-2563EB?style=for-the-badge&logo=files&logoColor=white)
+![Whoops](https://img.shields.io/badge/Whoops-Document%20Editor-2563EB?style=for-the-badge&logo=files&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
@@ -29,7 +29,7 @@ Full-stack real-time collaborative editor built with **Next.js**, **Express**, *
 
 ## Description
 
-Draftly is a full-stack collaborative document editing platform built for teams. It supports real-time multi-user editing powered by **Yjs** and **WebSockets**, rich text formatting via **Tiptap**, and a complete document management system with role-based permissions. Users can sign in via Google, GitHub, or email OTP, create and manage documents, invite collaborators, and see live cursor presence of other users in real time.
+Whoops is a full-stack collaborative document editing platform built for teams. It supports real-time multi-user editing powered by **Yjs** and **WebSockets**, rich text formatting via **Tiptap**, and a complete document management system with role-based permissions. Users can sign in via Google, GitHub, or email OTP, create and manage documents, invite collaborators, and see live cursor presence of other users in real time.
 
 ---
 
@@ -83,7 +83,7 @@ Draftly is a full-stack collaborative document editing platform built for teams.
 
 ## Project Structure
 ```
-draftly/
+Whoops/
 ├── client/                          # Next.js frontend application
 │   ├── .next/                       # Next.js build output and cached files
 │   ├── app/                         # App Router pages, layouts, and route segments
@@ -147,8 +147,8 @@ draftly/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/draftly.git
-cd draftly
+git clone https://github.com/your-username/Whoops.git
+cd Whoops
 ```
 
 ### 2. Install dependencies
@@ -198,8 +198,8 @@ The client runs at `http://localhost:3000` and the server at `http://localhost:8
 
 | Variable | Description | Example |
 |---|---|---|
-| `DATABASE_URL` | Connection pooling (transaction mode) — for runtime queries | `postgresql://user:pass@host:5432/draftly?pgbouncer=true` |
-| `DIRECT_URL` | Session mode pooler — for migrations | `postgresql://user:pass@host:5432/draftly` |
+| `DATABASE_URL` | Connection pooling (transaction mode) — for runtime queries | `postgresql://user:pass@host:5432/Whoops?pgbouncer=true` |
+| `DIRECT_URL` | Session mode pooler — for migrations | `postgresql://user:pass@host:5432/Whoops` |
 | `REDIS_URL` | Redis connection string | `redis://localhost:6379` |
 | `JWT_SECRET` | Secret key for signing JWTs | `your-secret-key` |
 | `PORT` | Port for the Express server | `8000` |
@@ -312,6 +312,6 @@ Then open a Pull Request against the `main` branch. Please include a clear descr
 
 <div align="center">
 
-Made with ❤️ by [Shivam Kumar](https://github.com/shivamkumar-dev)
+Made with ❤️ by [Vaibhav Walde](https://github.com/Vaibhav-Walde)
 
 </div>

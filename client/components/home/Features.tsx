@@ -72,7 +72,7 @@ const Features = () => (
           className="text-center font-mono text-sm max-w-xl mx-auto mb-16"
           style={{ color: "var(--text-secondary)" }}
         >
-          Draftly combines a powerful editor with real-time collaboration tools so your team can
+          Whoops combines a powerful editor with real-time collaboration tools so your team can
           focus on writing, not logistics.
         </p>
       </FadeUp>

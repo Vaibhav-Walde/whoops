@@ -43,7 +43,7 @@ const Navbar = () => {
           >
             <FileText className="w-4 h-4 text-white" />
           </div>
-          Draftly
+          Whoops
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">

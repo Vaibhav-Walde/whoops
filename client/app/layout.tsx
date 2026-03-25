@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Draftly — Real-time Collaborative Document Editor",
+  title: "Whoops — Real-time Collaborative Document Editor",
   description:
-    "Draftly is a real-time collaborative document editor built for teams. Write together, assign roles, track versions, and stay in sync — all in one place.",
+    "Whoops is a real-time collaborative document editor built for teams. Write together, assign roles, track versions, and stay in sync — all in one place.",
   keywords: [
     "collaborative document editor",
     "real-time editing",
@@ -22,21 +22,21 @@ export const metadata: Metadata = {
     "Yjs",
     "rich text editor",
   ],
-  authors: [{ name: "Shivam Kumar" }],
+  authors: [{ name: "Vaibhav Walde" }],
   openGraph: {
-    title: "Draftly — Real-time Collaborative Document Editor",
+    title: "Whoops — Real-time Collaborative Document Editor",
     description:
       "Write together in real time. Invite your team, assign roles, and watch edits appear live — with full version history and zero data loss.",
-    url: "https://draftly-snowy.vercel.app",
-    siteName: "Draftly",
+    url: "https://Whoops-snowy.vercel.app",
+    siteName: "Whoops",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Draftly — Real-time Collaborative Document Editor",
+    title: "Whoops — Real-time Collaborative Document Editor",
     description:
       "Write together in real time. Invite your team, assign roles, and watch edits appear live.",
-    creator: "@shivamkumardev",
+    creator: "@vaibhavwalde",
   },
 };
 

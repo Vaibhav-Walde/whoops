@@ -94,7 +94,7 @@ const Hero = () => {
           transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s",
         }}
       >
-        Draftly is a document editor built for collaboration. Invite your team, assign roles, and
+        Whoops is a document editor built for collaboration. Invite your team, assign roles, and
         watch edits appear live — with full version history and zero data loss.
       </p>
 
@@ -177,7 +177,7 @@ const Hero = () => {
                 className="mx-auto w-48 h-5 rounded-md text-[10px] font-mono flex items-center justify-center"
                 style={{ backgroundColor: "var(--hover)", color: "var(--text-secondary)" }}
               >
-                draftly.app/dashboard/document
+                Whoops.app/dashboard/document
               </div>
             </div>
             <div className="flex -space-x-2">
