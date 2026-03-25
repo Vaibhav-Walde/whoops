@@ -1,0 +1,52 @@
+/src/generated/prisma
+
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Prisma
+prisma/migrations/
+prisma/dev.db
+prisma/dev.db-journal
+prisma/generated
+
+# TypeScript
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# dotenv backups
+.env.local
+.env.prod
+
+#redis
+*.rdb

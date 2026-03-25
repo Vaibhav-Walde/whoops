@@ -1,0 +1,438 @@
+@import "tailwindcss";
+
+:root {
+  --primary:        #2563EB;
+  --primary-hover:  #1D4ED8;
+  --background:     #F8FAFC;
+  --canvas:         #FFFFFF;
+  --text-primary:   #0F172A;
+  --text-secondary: #64748B;
+  --border:         #E2E8F0;
+  --hover:          #ebeef1;
+  --success:        #22C55E;
+  --warning:        #F59E0B;
+  --error:          #EF4444;
+}
+
+.dark {
+  --primary:        #3B82F6;
+  --primary-hover:  #60A5FA;
+  --background:     #09090B;
+  --canvas:         #18181B;
+  --text-primary:   #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --border:         #27272A;
+  --hover:          #27272A;
+  --success:        #22C55E;
+  --warning:        #F59E0B;
+  --error:          #EF4444;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.page-transition {
+  animation: pageEnter 0.90s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.90);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   TIPTAP EDITOR
+═══════════════════════════════════════════ */
+
+.tiptap {
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.8;
+  font-family: 'Georgia', serif;
+}
+
+.tiptap > :first-child {
+  margin-top: 0;
+}
+
+/* ── Placeholder ── */
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--text-secondary);
+  pointer-events: none;
+  height: 0;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+}
+
+/* ── Paragraph ── */
+.tiptap p {
+  margin: 0.6em 0;
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+/* ── Headings ── */
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  line-height: 1.2;
+  text-wrap: pretty;
+  color: var(--text-primary);
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.tiptap h1 { font-size: 2.2rem; margin: 2.5rem 0 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+.tiptap h2 { font-size: 1.7rem; margin: 2rem 0 0.75rem; }
+.tiptap h3 { font-size: 1.35rem; margin: 1.75rem 0 0.6rem; }
+.tiptap h4 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
+.tiptap h5 { font-size: 1rem;    margin: 1.25rem 0 0.4rem; }
+.tiptap h6 { font-size: 0.9rem;  margin: 1rem 0 0.4rem; color: var(--text-secondary); }
+
+/* ── Bold / Italic / Underline ── */
+.tiptap strong { font-weight: 700; color: var(--text-primary); }
+.tiptap em     { font-style: italic; color: var(--text-secondary); }
+.tiptap u      { text-decoration-color: var(--primary); text-underline-offset: 3px; }
+.tiptap s      { color: var(--text-secondary); }
+
+/* ── Lists ── */
+.tiptap ul {
+  list-style-type: disc !important;
+  padding-left: 1.75rem !important;
+  margin: 0.75rem 0 !important;
+}
+
+.tiptap ol {
+  list-style-type: decimal !important;
+  padding-left: 1.75rem !important;
+  margin: 0.75rem 0 !important;
+}
+
+.tiptap li {
+  display: list-item !important;
+  margin: 0.35em 0;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.tiptap li p {
+  margin: 0;
+}
+
+/* ── Inline code ── */
+.tiptap code {
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 5px;
+  color: #1D4ED8;
+  font-size: 0.82em;
+  padding: 0.15em 0.45em;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-weight: 500;
+}
+
+.dark .tiptap code {
+  background-color: #1E3A5F;
+  border-color: #2563EB;
+  color: #93C5FD;
+}
+
+/* ── Code block ── */
+.tiptap pre {
+  background-color: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 10px;
+  color: #E2E8F0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.tiptap pre::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #EF4444;
+  box-shadow: 18px 0 0 #F59E0B, 36px 0 0 #22C55E;
+}
+
+.tiptap pre code {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 0.85rem;
+  padding: 0;
+  padding-top: 1.5rem;
+  display: block;
+  line-height: 1.7;
+}
+
+/* ── Blockquote ── */
+.tiptap blockquote {
+  border-left: 4px solid var(--primary);
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  background-color: #EFF6FF;
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+.dark .tiptap blockquote {
+  background-color: #1E3A5F20;
+}
+
+.tiptap blockquote p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* ── Horizontal rule ── */
+.tiptap hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 2.5rem 0;
+}
+
+/* ── Links ── */
+.tiptap a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.tiptap a:hover {
+  opacity: 0.75;
+}
+
+/* ── Highlight ── */
+.tiptap mark {
+  border-radius: 3px;
+  padding: 1px 3px;
+}
+
+/* ═══════════════════════════════════════════
+   IMAGES
+═══════════════════════════════════════════ */
+
+/* NodeViewWrapper for resizable image */
+.tiptap .resizable-image-wrapper {
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  display: block;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.tiptap img:hover {
+  border-color: #93C5FD;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.12);
+}
+
+.tiptap img.ProseMirror-selectednode,
+.tiptap .ProseMirror-selectednode img {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* ═══════════════════════════════════════════
+   TABLES
+═══════════════════════════════════════════ */
+
+.tableWrapper {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.tiptap table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+  margin: 0;
+  border: none;
+}
+
+.tiptap table thead {
+  background: linear-gradient(to bottom, var(--hover), var(--canvas));
+}
+
+.tiptap table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border);
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  position: relative;
+}
+
+.tiptap table th:last-child {
+  border-right: none;
+}
+
+.tiptap table td {
+  padding: 10px 14px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  vertical-align: top;
+  min-width: 80px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.tiptap table td:last-child {
+  border-right: none;
+}
+
+.tiptap table tr:last-child td {
+  border-bottom: none;
+}
+
+.tiptap table tr:hover td {
+  background-color: #F8FAFF;
+}
+
+.dark .tiptap table tr:hover td {
+  background-color: #1E293B;
+}
+
+/* Selected cell */
+.tiptap table .selectedCell {
+  background-color: #EFF6FF !important;
+  border-color: #93C5FD !important;
+}
+
+.dark .tiptap table .selectedCell {
+  background-color: #1E3A5F20 !important;
+  border-color: var(--primary) !important;
+}
+
+/* Column resize handle */
+.tiptap table .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--primary);
+  cursor: col-resize;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.tiptap table th:hover .column-resize-handle,
+.tiptap table td:hover .column-resize-handle {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════
+   COLLABORATION CURSORS
+═══════════════════════════════════════════ */
+
+.collab-cursor {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 2px solid;
+  word-break: normal;
+  pointer-events: none;
+}
+
+.collab-caret {
+  position: absolute;
+  top: -1.4em;
+  left: -2px;
+  width: 2px;
+  height: 1.2em;
+  border-left: 2px solid;
+}
+
+.collab-label {
+  position: absolute;
+  top: -1.8em;
+  left: -2px;
+  font-size: 10px;
+  font-family: monospace;
+  font-weight: 600;
+  white-space: nowrap;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  user-select: none;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ═══════════════════════════════════════════
+   PROSEMIRROR SELECTION
+═══════════════════════════════════════════ */
+
+.ProseMirror-selectednode {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Text selection ── */
+.tiptap ::selection {
+  background-color: rgba(37, 99, 235, 0.15);
+}

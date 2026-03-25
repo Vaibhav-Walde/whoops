@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id       String       @id @default(uuid())
+  name     String
+  email    String       @unique
+  imageUrl String?
+  provider AuthProvider
+  role     UserRole     @default(USER)
+
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  documents        Document[]
+  documentUsers    DocumentUser[]
+  documentVersions DocumentVersion[]
+}
+
+model Document {
+  id          String  @id @default(uuid())
+  title       String
+  description String?
+  content     String?
+
+  ownerId String
+  owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  documentUsers    DocumentUser[]
+  documentVersions DocumentVersion[]
+}
+
+model DocumentUser {
+  id String @id @default(uuid())
+
+  userId     String
+  documentId String
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  role DocumentUserRole @default(VIEWER)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, documentId])
+}
+
+model DocumentVersion {
+  id String @id @default(uuid())
+
+  documentId String
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  content   Bytes
+  savedAt   DateTime @default(now())
+  savedById String
+  savedBy   User     @relation(fields: [savedById], references: [id], onDelete: Cascade)
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum AuthProvider {
+  GOOGLE
+  GITHUB
+  EMAIL
+}
+
+enum DocumentUserRole {
+  VIEWER
+  EDITOR
+}
