@@ -45,7 +45,7 @@ const AIToolbar = ({
           <button
             key={action.value}
             onClick={() => handleAction(action.value)}
-            className="px-2 py-1 text-xs rounded hover:bg-gray-100 whitespace-nowrap"
+            className="px-2 py-1 text-xs rounded hover:bg-gray-100 whitespace-nowrap text-gray-800"
           >
             {action.label}
           </button>
