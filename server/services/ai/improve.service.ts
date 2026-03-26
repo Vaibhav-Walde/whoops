@@ -1,6 +1,6 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 type AIAction = "improve" | "summarize" | "rewrite" | "fix-grammar";
 
@@ -12,10 +12,13 @@ const prompts: Record<AIAction, string> = {
 };
 
 const aiImproveService = async (text: string, action: AIAction): Promise<string> => {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
-  const prompt = `${prompts[action]}\n\n${text}`;
-  const result = await model.generateContent(prompt);
-  return result.response.text();
+  const completion = await groq.chat.completions.create({
+    model: "llama-3.3-70b-versatile",
+    messages: [
+      { role: "user", content: `${prompts[action]}\n\n${text}` }
+    ],
+  });
+  return completion.choices[0]?.message?.content || "";
 };
 
 export default aiImproveService;
