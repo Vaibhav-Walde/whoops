@@ -50,10 +50,10 @@ export default function AIChatButton() {
       {open && (
         <div
           className="fixed bottom-24 right-6 z-50 w-80 h-96 rounded-2xl shadow-2xl flex flex-col overflow-hidden border"
-          style={{ backgroundColor: "var(--canvas, #fff)", borderColor: "var(--border, #e5e7eb)" }}
+          style={{ backgroundColor: "#1f2937", borderColor: "#374151" }}
         >
           {/* Header */}
-          <div className="px-4 py-3 font-semibold text-sm border-b" style={{ borderColor: "var(--border, #e5e7eb)" }}>
+          <div className="px-4 py-3 font-semibold text-sm border-b" style={{ borderColor: "#374151", color: "#f9fafb" }}>
             ✨ AI Assistant
           </div>
 
@@ -61,7 +61,7 @@ export default function AIChatButton() {
           <div className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-2">
             {messages.map((msg, i) => (
               <div key={i} className={`text-sm px-3 py-2 rounded-xl max-w-[85%] ${msg.role === "user" ? "self-end text-white" : "self-start"}`}
-                style={msg.role === "user" ? { backgroundColor: "var(--accent, #6366f1)" } : { backgroundColor: "var(--surface, #f3f4f6)" }}>
+              style={msg.role === "user" ? { backgroundColor: "#6366f1", color: "#fff" } : { backgroundColor: "#374151", color: "#f9fafb" }}>
                 {msg.content}
               </div>
             ))}
@@ -81,7 +81,7 @@ export default function AIChatButton() {
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               placeholder="Ask anything..."
               className="flex-1 text-sm px-3 py-2 rounded-lg border outline-none"
-              style={{ borderColor: "var(--border, #e5e7eb)", backgroundColor: "var(--surface, #f9fafb)" }}
+              style={{ borderColor: "#374151", backgroundColor: "#374151", color: "#f9fafb" }}
             />
             <button
               onClick={sendMessage}
