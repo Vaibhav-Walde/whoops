@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import type { StringValue } from "ms";
+dotenv.config({ override: false });
 
 dotenv.config();
 
