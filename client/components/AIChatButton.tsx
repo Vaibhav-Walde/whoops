@@ -27,8 +27,7 @@ export default function AIChatButton() {
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setLoading(true);
     try {
-      const res = await api.post("/chat", { message: userMessage, history: messages });
-      setMessages((prev) => [...prev, { role: "assistant", content: res.data.reply }]);
+        const res = await api.post("/ai/chat", { message: userMessage, history: messages });      setMessages((prev) => [...prev, { role: "assistant", content: res.data.reply }]);
     } catch {
       setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, something went wrong. Try again!" }]);
     } finally {
