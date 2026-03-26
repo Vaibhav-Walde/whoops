@@ -12,7 +12,7 @@ const prompts: Record<AIAction, string> = {
 };
 
 const aiImproveService = async (text: string, action: AIAction): Promise<string> => {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const prompt = `${prompts[action]}\n\n${text}`;
   const result = await model.generateContent(prompt);
   return result.response.text();
