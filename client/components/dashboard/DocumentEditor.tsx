@@ -6,7 +6,7 @@ import StarterKit from "@tiptap/starter-kit";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import { EditorContent, useEditor } from "@tiptap/react";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { MenuBar } from "./Menubar";
 import Collaboration from "@tiptap/extension-collaboration";
 import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
@@ -24,6 +24,7 @@ import TableHeader from "@tiptap/extension-table-header";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import ResizableImage from "./editor/ResizableImage.extention";
+import AIToolbar from "./AIToolbar";
 
 const DocumentEditor = ({
   documentId,
@@ -39,6 +40,8 @@ const DocumentEditor = ({
   onSaveStatusChange?: (status: "saving" | "saved" | "error") => void;
 }) => {
   const { ydoc, provider } = getCollaborationInstance(documentId, initialContent);
+  const [aiToolbar, setAiToolbar] = useState<{ top: number; left: number; text: string } | null>(null);
+  const editorRef = useRef<HTMLDivElement>(null);
 
   const editor = useEditor({
     extensions: [
@@ -87,14 +90,37 @@ const DocumentEditor = ({
     ],
     editable: !isReadOnly,
     immediatelyRender: false,
+    onSelectionUpdate: ({ editor }) => {
+      const { from, to } = editor.state.selection;
+      const selectedText = editor.state.doc.textBetween(from, to, " ");
+      if (selectedText.trim().length > 0) {
+        const { view } = editor;
+        const start = view.coordsAtPos(from);
+        const editorRect = editorRef.current?.getBoundingClientRect();
+        if (editorRect) {
+          setAiToolbar({
+            top: start.top - editorRect.top - 45,
+            left: start.left - editorRect.left,
+            text: selectedText,
+          });
+        }
+      } else {
+        setAiToolbar(null);
+      }
+    },
   });
+
+  const handleReplace = (newText: string) => {
+    if (!editor) return;
+    const { from, to } = editor.state.selection;
+    editor.chain().focus().deleteRange({ from, to }).insertContentAt(from, newText).run();
+    setAiToolbar(null);
+  };
 
   // Auto-save
   useEffect(() => {
     if (isReadOnly) return;
-
     let timeout: NodeJS.Timeout;
-
     const handleUpdate = (_update: Uint8Array, origin: unknown) => {
       if (origin === provider) return;
       clearTimeout(timeout);
@@ -110,7 +136,6 @@ const DocumentEditor = ({
         }
       }, 2000);
     };
-
     ydoc.on("update", handleUpdate);
     return () => {
       clearTimeout(timeout);
@@ -132,7 +157,6 @@ const DocumentEditor = ({
 
   return (
     <div className="flex flex-col h-full">
-      {/* Toolbar */}
       {!isReadOnly ? (
         editor && <MenuBar editor={editor} />
       ) : (
@@ -150,11 +174,18 @@ const DocumentEditor = ({
         </div>
       )}
 
-      {/* Editor canvas */}
       <div
-        className="flex-1 px-4 py-12 min-h-[70vh] rounded-b-md"
+        ref={editorRef}
+        className="flex-1 px-4 py-12 min-h-[70vh] rounded-b-md relative"
         style={{ backgroundColor: "var(--canvas)" }}
       >
+        {aiToolbar && !isReadOnly && (
+          <AIToolbar
+            selectedText={aiToolbar.text}
+            position={{ top: aiToolbar.top, left: aiToolbar.left }}
+            onReplace={handleReplace}
+          />
+        )}
         <div className="max-w-5xl mx-auto">
           <EditorContent editor={editor} />
         </div>
