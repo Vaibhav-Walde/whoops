@@ -24,7 +24,7 @@ const AIToolbar = ({
     if (!selectedText.trim()) return;
     setLoading(true);
     try {
-      const res = await api.post("/api/v1/ai/improve", { text: selectedText, action });
+        const res = await api.post("/ai/improve", { text: selectedText, action });
       onReplace(res.data.result);
     } catch (err) {
       console.error("AI error:", err);
