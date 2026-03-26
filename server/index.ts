@@ -28,6 +28,12 @@ app.use(errorHandlerMiddleware);
 app.get("/health", (_req, res) => {
   return res.status(200).json({ status: "ok" });
 });
+app.get("/debug", (_req, res) => {
+  return res.status(200).json({ 
+    allowed_origins: process.env.ALLOWED_ORIGINS,
+    node_env: process.env.NODE_ENV
+  });
+});
 
 cron.schedule(
   "0 */12 * * *",
