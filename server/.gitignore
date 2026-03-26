@@ -49,4 +49,4 @@ temp/
 .env.prod
 
 #redis
-*.rdb
+*.rdb.env
