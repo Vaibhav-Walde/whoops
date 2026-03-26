@@ -149,13 +149,23 @@ const DocumentEditor = ({
     return () => destroyCollaborationInstance(documentId);
   }, [documentId]);
 
-  // Sync isReadOnly
-  useEffect(() => {
-    if (!editor) return;
-    editor.setEditable(!isReadOnly);
-  }, [editor, isReadOnly]);
+ // Sync isReadOnly
+ useEffect(() => {
+  if (!editor) return;
+  editor.setEditable(!isReadOnly);
+}, [editor, isReadOnly]);
 
-  return (
+// Listen for AI chat insert
+useEffect(() => {
+  const handleAIInsert = (e: CustomEvent) => {
+    if (!editor || isReadOnly) return;
+    editor.chain().focus().insertContent(e.detail.text).run();
+  };
+  window.addEventListener("ai-insert", handleAIInsert as EventListener);
+  return () => window.removeEventListener("ai-insert", handleAIInsert as EventListener);
+}, [editor, isReadOnly]);
+
+return (
     <div className="flex flex-col h-full">
       {!isReadOnly ? (
         editor && <MenuBar editor={editor} />
@@ -173,6 +183,7 @@ const DocumentEditor = ({
           </span>
         </div>
       )}
+  
 
       <div
         ref={editorRef}
